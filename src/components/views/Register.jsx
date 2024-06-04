@@ -1,4 +1,5 @@
 import '../../assets/css/register.css'
+import videoRegistro from '../../assets/media/VideoRegistro.mp4'
 
 function Register() {
 
@@ -84,7 +85,7 @@ function Register() {
             <iframe
               width="560"
               height="315"
-              src="https://www.youtube.com/embed/l6-yi72brk8?si=f4bP0AcNsyhWliwE"
+              src={videoRegistro}
               frameborder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowfullscreen>

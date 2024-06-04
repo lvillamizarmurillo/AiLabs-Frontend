@@ -1,0 +1,108 @@
+# Node modules
+node_modules/
+
+# Build output
+build/
+dist/
+
+# Local env files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Editor directories and files
+.vscode/
+.idea/
+.DS_Store
+
+# Miscellaneous
+/.pnp
+.pnp.js
+*.log
+
+# Local history for WebStorm users
+/.idea/
+
+# Ignore Quokka.js files
+quokka/
+
+# Ignore TypeScript build output
+*.tsbuildinfo
+
+# Ignore JetBrains project files
+/.idea/
+/.idea_modules/
+
+# Ignore Coverage directory used by tools like istanbul
+coverage/
+
+# Ignore specific bundler directories
+/.cache
+
+# Ignore storybook build output
+out/
+
+# Ignore public URL for CRA
+/public_url
+
+# Ignore test output
+/coverage/
+
+# Ignore build manifest files
+/asset-manifest.json
+/service-worker.js
+
+# Ignore generated files
+/*.iml
+.gradle
+.classpath
+.project
+.settings
+.apt_generated
+.factorypath
+.cache
+.externalToolBuilders
+.merge_file_
+
+# Ignore directories
+/.history
+
+# Sentry debug log
+.sentryclirc
+.sentryauth
+
+# CRA configuration
+.local
+
+# Node and NPM directories
+.npm
+.nvm
+
+# Webpack specific
+/.eslintcache
+.cache/
+.cache-loader
+
+# Parcel-bundler specific
+.cache/
+
+# dotenv environment variables file
+.env.*
+!.env.example
+!.env.*
+
+# Ignore MacOS specific files
+.DS_Store
+
+# Ignore Python virtual environment
+.venv/
+
+# Ignore Code Coverage directory used by tools like istanbul
+coverage/
