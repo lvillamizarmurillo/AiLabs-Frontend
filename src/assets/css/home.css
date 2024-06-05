@@ -11,6 +11,7 @@ body {
     height: auto;
     background-color: white;
     border: solid 1px white;
+    border-bottom: 2px solid rgb(24, 86, 179);
 }
 
 .historico {
@@ -45,6 +46,8 @@ body {
     height: 500px;
     background-color: white;
     border: solid 1px white;
+    border-bottom: 2px solid rgb(24, 86, 179);
+    
 }
 
 .referidos {

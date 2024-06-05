@@ -3,7 +3,7 @@
   display: flex;
   position: relative;
   width: 100%;
-  background-color: rgb(40, 40, 40);
+  background: linear-gradient(to right, rgb(24, 86, 179), #2f5794);
 }
 
 body, html {
@@ -31,7 +31,6 @@ body, html {
   display: flex;
   flex-direction: column;
   color: white;
-  text-shadow: 2px 0 5px #1bdbfd;
   width: 20%;
   height: 100%;
 }
@@ -61,7 +60,8 @@ body, html {
 }
 
 .button-navb, .button-navb2 {
-  --green: #1bdbfd;
+  --green: #ffffff;
+  
   font-size: 12px;
   letter-spacing: 0.08em;
   position: relative;
@@ -71,15 +71,14 @@ body, html {
   transition: all 0.3s;
   line-height: 1.4em;
   border: 2px solid var(--green);
-  background: linear-gradient(to right, rgba(27, 253, 156, 0.1) 1%, transparent 40%, transparent 60%, rgba(27, 253, 156, 0.1) 100%);
+  background: transparent;
   color: var(--green);
-  box-shadow: inset 0 0 10px rgba(27, 253, 223, 0.6), 0 0 9px 3px rgba(27, 227, 253, 0.2);
 }
 
 .button-navb:hover, .button-navb2:hover {
   transform: translateY(-2px);
-  background-color: #1bdbfd;
-  color:black;
+  background-color: #7da0d6;
+  color:rgb(255, 255, 255);
   transition: 0.2s;
 }
 
@@ -106,7 +105,7 @@ body, html {
   position: absolute;
   top: 50px;
   right: 0;
-  background-color: rgb(40, 40, 40);
+  background: linear-gradient(to right, rgb(24, 86, 179), #2f5794);
   border: 1px solid #ccc;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   border-radius: 4px;
@@ -131,7 +130,6 @@ body, html {
   justify-content: center;
   align-items: center;
   text-align: center;
-  text-shadow: 2px 0 5px #1bdbfd;
   text-decoration: none;
   height: 100%;
   color: white;
@@ -139,7 +137,7 @@ body, html {
 }
 
 .profile-menu-container .profile-dropdown-menu ul li a:hover {
-  background-color: #646363;
+  background-color: #7da0d6;
   transition: 0.3s;
 }
 
@@ -173,7 +171,7 @@ body, html {
   display: flex;
   height: 100%;
   transition: transform 0.3s ease;
-  background-color: rgb(40, 40, 40);
+  background: linear-gradient(to right, rgb(24, 86, 179), #2f5794);
   z-index: 50;
 }
 
@@ -199,17 +197,17 @@ body, html {
   padding: 10px 15px;
   font-weight: 900;
   font-size: 18px;
-  background-color: rgb(40, 40, 40);
+  background: #2f5794;
   border-radius: 10px;
-  border: 1px solid #1bdbfd;
+  border: 1px solid #ffffff;
   color: aliceblue;
   cursor: pointer;
 }
 
 .menu1 .button-closed:hover {
   transform: translateY(-2px);
-  background-color: #1bdbfd;
-  color:black;
+  background-color: #7da0d6;
+  color:rgb(255, 255, 255);
   transition: 0.2s;
 }
 
@@ -220,7 +218,7 @@ body, html {
 }
 
 .menu1 .menu .btn {
-  background-color: rgb(40, 40, 40);
+  background: right, rgb(24, 86, 179);
   color: white;
   border: none;
   padding: 10px 20px;
@@ -246,7 +244,7 @@ body, html {
   left: -100%;
   width: 350px;
   height: 100%;
-  background-color: rgb(40, 40, 40);
+  background: linear-gradient(to right, rgb(24, 86, 179), #2f5794);
   box-shadow: 2px 0 5px var(--box-shadow-color);
   transition: left 0.3s ease;
 }
@@ -255,10 +253,13 @@ body, html {
   left: 0;
 }
 
+/* walletusd bscalgo */
+/* wallet de usdt de la red 20 BEP20 */
+
 .menu1 .menu .offcanvas .offcanvas-header {
   padding: 15px;
-  background-color: rgb(40, 40, 40);
-  border-bottom: 1px solid;
+  background: linear-gradient(to right, rgb(24, 86, 179), #2f5794);
+  border-bottom: 1px solid white;
 }
 
 /* Media Query para pantallas pequeñas */

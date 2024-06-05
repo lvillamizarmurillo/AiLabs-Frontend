@@ -73,7 +73,7 @@ function Home() {
             <div className="optionUer">
               <a href="">
                 <img src="src/assets/img/referidos.png" alt="" />
-                <p>Referir</p>
+                <p>Tutorial para conectarte a Ail-Labs</p>
               </a>
             </div>
             <div className="optionUer">
