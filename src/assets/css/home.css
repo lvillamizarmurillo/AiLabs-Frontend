@@ -1,0 +1,165 @@
+body {
+    background-color: rgb(226, 226, 226);
+}
+
+.saldo-container {
+    display: flex;
+    margin: auto;
+    margin-top: 30px;
+    border-radius: 5px;
+    width: 90%;
+    height: auto;
+    background-color: white;
+    border: solid 1px white;
+}
+
+.historico {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+
+.historico:hover {
+    background-color: rgb(226, 226, 226);
+    transition: 0.3s;
+}
+
+.title {
+    margin-top: 10px;
+    margin-left: 10px;
+    font-size: 40px;
+}
+
+.saldo {
+    margin-top: -10px;
+    margin-left: 10px;
+    font-size: 30px;
+}
+
+.informacion {
+    display: flex;
+    margin: auto;
+    margin-top: 30px;
+    border-radius: 5px;
+    width: 90%;
+    height: 500px;
+    background-color: white;
+    border: solid 1px white;
+}
+
+.referidos {
+    display: flex;
+    margin: 10px;
+    align-items: baseline;
+    width: 40%;
+    overflow-y: scroll;
+}
+
+.referidos table {
+    width: 100%;
+}
+
+.referidos table tr:hover {
+    background-color: rgb(226, 226, 226);
+    transition: 0.3s;
+}
+
+/* Bordes sólidos según el contenido de los tr */
+.referidos table td:has(h2) {
+    border-bottom: 2px solid black;
+}
+
+.referidos table td:has(p) {
+    border-bottom: 1px solid black;
+}
+
+.opciones {
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+    width: 60%;
+    border: solid 1px rgb(226, 226, 226);
+    border-radius: 5px;
+}
+
+.arriba {
+    display: flex;
+    height: 50%;
+    width: 100%;
+}
+
+.abajo {
+    display: flex;
+    height: 50%;
+    width: 100%;
+}
+
+.optionUer {
+    display: flex;
+    width: 50%;
+}
+
+.optionUer a {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+}
+
+.optionUer a p {
+    margin-top: 5px;
+    color: rgb(99, 99, 99);
+    align-items: center;
+    justify-content: center;
+}
+
+.optionUer a:hover {
+    background-color: rgb(226, 226, 226);
+    transition: 0.3s;
+}
+
+.optionUer img {
+    padding-top: 20px;
+    width: 150px;
+    height: 150px;
+}
+
+@media (max-width: 1015px) {
+    .saldo-container {
+        flex-direction: column;
+        background-color: white;
+    }
+
+    .historico {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .title {
+        margin-top: 10px;
+        margin-left: 10px;
+        font-size: 40px;
+    }
+
+    .saldo {
+        margin-top: -10px;
+        margin-left: 10px;
+        font-size: 30px;
+    }
+
+    .informacion {
+        flex-direction: column-reverse;
+        height: 900px;
+    }
+
+    .referidos {
+        width: 100%;
+    }
+
+    .opciones {
+        width: 100%;
+    }
+}

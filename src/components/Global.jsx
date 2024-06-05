@@ -58,11 +58,11 @@ const Navbar = ({ userSignedIn }) => {
             <p>1</p>
           </div>
           <div>
-            <a className='containerButton' href="#"><button className='button-navb'>Referidos</button></a>
+            <a className='containerButton' href="#"><button className='button-navb2'><p>Recomendar</p></button></a>
           </div>
         </div>
         <div className="container-fluid-2">
-          <a className="btn" href="#"><button className='button-navb'>Wallet</button></a>
+          <a className="btn" href="#"><button className='button-navb2'><p>Wallet</p></button></a>
           <div className="profile-menu-container">
             <img 
               src={iconUser}
