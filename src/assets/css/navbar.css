@@ -194,6 +194,7 @@ body, html {
 }
 
 .menu1 .button-closed {
+  margin: 0px;
   padding: 10px 15px;
   font-weight: 900;
   font-size: 18px;
@@ -260,6 +261,137 @@ body, html {
   padding: 15px;
   background: linear-gradient(to right, rgb(24, 86, 179), #2f5794);
   border-bottom: 1px solid white;
+}
+
+/* Modal Styles */
+.modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+  display: flex;
+  flex-direction: column;
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 500px;
+  border-radius: 10px;
+}
+
+.close-btn {
+  display: flex;
+  margin: 0px 0px 25px 96.5%;
+  width: 10px;
+  height: 5px;
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.copy-btn,
+.save-btn {
+  padding: 10px 20px;
+  margin-top: 10px;
+  --green: rgb(24, 86, 179);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  position: relative;
+  font-family: inherit;
+  border-radius: 5px;
+  overflow: hidden;
+  transition: all 0.3s;
+  line-height: 1.4em;
+  border: 2px solid var(--green);
+  background: transparent;
+  color: var(--green);
+}
+
+.copy-btn:hover,
+.save-btn:hover {
+  background-color: #0056b3;
+  transform: translateY(-2px);
+  background-color: #7da0d6;
+  color: rgb(255, 255, 255);
+  transition: 0.2s;
+}
+
+.copy-success {
+  font-size: 20px;
+  color: green;
+}
+
+.copy-success img{
+  position: absolute;
+  padding-left: 300px;
+  width: 30px;
+  height: 30px;
+}
+
+.edit-icon {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  margin-left: 10px;
+  margin-top: 10px;
+}
+
+input[disabled] {
+  background-color: #e9ecef;
+  cursor: not-allowed;
+}
+
+.input-disabled {
+  height: 40px;
+  border-radius: 3px;
+  border: 2px solid hsl(236, 92%, 66%);
+  outline: none;
+  transition: 200ms ease-in;
+  padding-left: 1rem;
+  opacity: 0.6;
+}
+
+input {
+  height: 40px;
+  border-radius: 3px;
+  border: 2px solid hsl(236, 92%, 66%);
+  outline: none;
+  transition: 200ms ease-in;
+  padding-left: 1rem;
+  margin-bottom: 10px;
+}
+
+.warning {
+  color: red;
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.warning img{
+  position: absolute;
+  padding-left: 455px;
+  width: 30px;
+  height: 30px;
 }
 
 /* Media Query para pantallas pequeñas */

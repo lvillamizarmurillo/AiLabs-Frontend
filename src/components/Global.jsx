@@ -1,13 +1,33 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import '../assets/css/navbar.css';
 import iconUser from "../assets/img/navbar/iconUser.png";
 import ailabsLogo from "../assets/img/navbar/Ai Labs logo.png";
 import iconMenu from "../assets/img/navbar/iconMenu.png";
+import editIcon from "../assets/img/navbar/lapiz.png";
+import check from "../assets/img/navbar/check.png";
+import waring from "../assets/img/navbar/waring.png";
 
 const Navbar = ({ userSignedIn }) => {
   const [profileMenuOpen, setProfileMenuOpen] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const [isRecommendModalOpen, setRecommendModalOpen] = useState(false);
+  const [isWalletModalOpen, setWalletModalOpen] = useState(false);
+  const [copySuccess, setCopySuccess] = useState('');
+  const [isEditable, setIsEditable] = useState(false);
+  const [walletLink, setWalletLink] = useState('https://mi-sitio.com/wallet'); // Link de la wallet
+  const [walletLink2, setWalletLink2] = useState('https://mi-sitio.com/wallet2'); // Segundo link de la wallet
+  const [isMissingData, setIsMissingData] = useState(false);
+  const [missingField1, setMissingField1] = useState('');
+  const [missingField2, setMissingField2] = useState('');
+
+  const referralUrl = 'http://localhost:5004/register'; // URL de referido
+
+  useEffect(() => {
+    // Simular lógica para verificar si hay datos faltantes
+    const userHasMissingData = true; // Cambia esto según la lógica de tu aplicación
+    setIsMissingData(userHasMissingData);
+  }, []);
 
   const toggleProfileMenu = () => {
     setProfileMenuOpen(!profileMenuOpen);
@@ -15,6 +35,39 @@ const Navbar = ({ userSignedIn }) => {
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
+  };
+
+  const toggleRecommendModal = () => {
+    setRecommendModalOpen(!isRecommendModalOpen);
+  };
+
+  const toggleWalletModal = () => {
+    setWalletModalOpen(!isWalletModalOpen);
+  };
+
+  const copyToClipboard = () => {
+    navigator.clipboard.writeText(referralUrl).then(() => {
+      setCopySuccess(`Link de de recomendación copiado`);
+      setTimeout(() => {
+        setCopySuccess('');
+      }, 2000);
+    }, () => {
+      setCopySuccess('Error al copiar el link');
+    });
+  };
+
+  const handleEditWalletLink = () => {
+    setIsEditable(true);
+  };
+
+  const handleSaveWalletLink = () => {
+    setIsEditable(false);
+    // Aquí puedes agregar cualquier lógica adicional para guardar el link de la wallet
+  };
+
+  const handleSaveMissingData = () => {
+    setIsMissingData(false);
+    // Aquí puedes agregar lógica adicional para guardar los datos faltantes
   };
 
   return (
@@ -58,11 +111,11 @@ const Navbar = ({ userSignedIn }) => {
             <p>1</p>
           </div>
           <div>
-            <a className='containerButton' href="#"><button className='button-navb2'><p>Recomendar</p></button></a>
+            <a className='containerButton' href="#"><button className='button-navb2' onClick={toggleRecommendModal}><p>Recomendar</p></button></a>
           </div>
         </div>
         <div className="container-fluid-2">
-          <a className="btn" href="#"><button className='button-navb2'><p>Wallet</p></button></a>
+          <a className="btn" href="#"><button className='button-navb2' onClick={toggleWalletModal}><p>Wallet</p></button></a>
           <div className="profile-menu-container">
             <img 
               src={iconUser}
@@ -82,6 +135,65 @@ const Navbar = ({ userSignedIn }) => {
           </div>
         </div>
       </nav>
+
+      {isRecommendModalOpen && (
+        <div className="modal">
+          <div className="modal-content">
+            <span className="close-btn" onClick={toggleRecommendModal}>&times;</span>
+            <p>Haz clic en el botón para copiar el link de referido:</p>
+            {copySuccess && <span className="copy-success"><img src={check} alt="Check" />{copySuccess}</span>}
+            <button className="copy-btn" onClick={copyToClipboard}>Copiar Link</button>
+          </div>
+        </div>
+      )}
+
+      {isWalletModalOpen && (
+        <div className="modal">
+          <div className="modal-content">
+            <span className="close-btn" onClick={toggleWalletModal}>&times;</span>
+            <p>Wallet:</p>
+            <input
+              type="text"
+              value={walletLink}
+              onChange={(e) => setWalletLink(e.target.value)}
+              disabled={!isEditable}
+              className={!isEditable ? 'input-disabled' : ''}
+            />
+            <p>Id Binance:</p>
+            <input
+              type="text"
+              value={walletLink2}
+              onChange={(e) => setWalletLink2(e.target.value)}
+              disabled={!isEditable}
+              className={!isEditable ? 'input-disabled' : ''}
+            />
+            <img src={editIcon} alt="Edit" className="edit-icon" onClick={handleEditWalletLink} />
+            {isEditable && <button className="save-btn" onClick={handleSaveWalletLink}>Guardar</button>}
+          </div>
+        </div>
+      )}
+
+      {isMissingData && (
+        <div className="modal">
+          <div className="modal-content">
+            <span className="close-btn" onClick={() => setIsMissingData(false)}>&times;</span>
+            <p className="warning"><img src={waring} alt="Warning" /> Necesitas llenar estos campos para finalizar el registro</p>
+            <input
+              type="text"
+              placeholder="Trading Account"
+              value={missingField1}
+              onChange={(e) => setMissingField1(e.target.value)}
+            />
+            <input
+              type="text"
+              placeholder="Id Suscription"
+              value={missingField2}
+              onChange={(e) => setMissingField2(e.target.value)}
+            />
+            <button className="save-btn" onClick={handleSaveMissingData}>Guardar</button>
+          </div>
+        </div>
+      )}
     </>
   );
 };
