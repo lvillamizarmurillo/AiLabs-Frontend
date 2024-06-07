@@ -93,9 +93,9 @@ const Navbar = ({ userSignedIn }) => {
                 <div className="offcanvas-content">
                   <a className='containerButton' href="#"><button className='button-navb'>Inicio</button></a>
                   <a className='containerButton' href="#"><button className='button-navb'>Mi equipo</button></a>
-                  <a className='containerButton' href="#"><button className='button-navb'>Wallet</button></a>
                   <a className='containerButton' href="#"><button className='button-navb'>Tutoriales</button></a>
                   <a className='containerButton' href="#"><button className='button-navb'>Privacidad</button></a>
+                  <a className='containerButton' href="#"><button className='button-navb'>Socio comercial</button></a>
                 </div>
               </div>
             </div>
