@@ -1,9 +1,11 @@
 import React from 'react';
 import '../../assets/css/team.css';
+import Navbar from '../Global.jsx';
 
 const Team = () => {
   return (
     <>
+      <Navbar />
       <div className="containerPincipal">
         <div className="uesr-principal">
           <h2>lvillamizar</h2>

@@ -1,4 +1,4 @@
-import Navbar from '../Global.jsx';
+C
 import '../../assets/css/home.css'
 
 function Home() {
