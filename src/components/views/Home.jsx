@@ -1,4 +1,4 @@
-C
+import Navbar from '../Global.jsx';
 import '../../assets/css/home.css'
 
 function Home() {
@@ -17,7 +17,7 @@ function Home() {
         </div>
       </div>
 
-      <div className="informacion">
+      <div className="informacion1">
         <div className="referidos">
           <table>
             <tr>

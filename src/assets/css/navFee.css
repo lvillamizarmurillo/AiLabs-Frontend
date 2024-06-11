@@ -1,0 +1,128 @@
+.nav-containerFee {
+    display: flex;
+    width: 100%;
+    height: 40px;
+}
+
+.menu-buttons {
+    display: flex;
+    width: 100%;
+}
+
+.buttons-fees-options {
+    width: 14.2857%;
+}
+
+.fancy {
+    width: 100%;
+    background-color: white;
+    border: 2px solid rgb(29, 28, 82);
+    border-radius: 0;
+    box-sizing: border-box;
+    color: rgb(29, 28, 82);
+    cursor: pointer;
+    display: inline-block;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    margin: 0;
+    outline: none;
+    overflow: visible;
+    padding: 0.7em 2em;
+    position: relative;
+    text-align: center;
+    text-transform: none;
+    transition: all 0.3s ease-in-out;
+    user-select: none;
+    font-size: 13px;
+    background: transparent;
+}
+
+.fancy::before {
+    content: " ";
+    width: 1.5625rem;
+    height: 2px;
+    background: rgb(29, 28, 82);
+    top: 50%;
+    left: 1.5em;
+    position: absolute;
+    transform: translateY(-50%);
+    transform-origin: center;
+    transition: background 0.3s linear, width 0.3s linear;
+}
+
+.fancy .text {
+    font-size: 1.125em;
+    line-height: 1.33333em;
+    padding-left: 2em;
+    display: block;
+    text-align: left;
+    transition: all 0.3s ease-in-out;
+    text-transform: uppercase;
+    color: rgb(29, 28, 82);
+}
+
+.fancy .top-key {
+    height: 2px;
+    width: 1.5625rem;
+    top: -2px;
+    left: 0.625rem;
+    position: absolute;
+    background: #e8e8e8;
+    transition: width 0.5s ease-out, left 0.3s ease-out;
+}
+
+.fancy .bottom-key-1 {
+    height: 2px;
+    width: 1.5625rem;
+    right: 1.875rem;
+    bottom: -2px;
+    position: absolute;
+    background: #e8e8e8;
+    transition: width 0.5s ease-out, right 0.3s ease-out;
+}
+
+.fancy .bottom-key-2 {
+    height: 2px;
+    width: 0.625rem;
+    right: 0.625rem;
+    bottom: -2px;
+    position: absolute;
+    background: #e8e8e8;
+    transition: width 0.5s ease-out, right 0.3s ease-out;
+}
+
+.fancy:hover, .fancy.active {
+    color: white;
+    background: rgb(29, 28, 82);
+}
+
+.fancy:hover::before, .fancy.active::before {
+    width: 0.9375rem;
+    background: white;
+}
+
+.fancy:hover .text, .fancy.active .text {
+    color: white;
+    padding-left: 1.5em;
+}
+
+.fancy:hover .top-key, .fancy.active .top-key {
+    left: -2px;
+    width: 0px;
+}
+
+.fancy:hover .bottom-key-1,
+.fancy:hover .bottom-key-2,
+.fancy.active .bottom-key-1,
+.fancy.active .bottom-key-2 {
+    right: 0;
+    width: 0;
+}
+
+@media (max-width: 1245px) {
+    .fancy{
+        margin-top: -6px;
+        font-size: 10.5px;
+        padding: 1.3em 2em
+    }
+}

@@ -1,0 +1,39 @@
+.date-form {
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .date-form label {
+    font-size: 16px;
+    color: rgb(56, 55, 100);
+    padding-left: 25px;
+  }
+  
+  .date-form input[type="date"] {
+    padding: 8px;
+    margin-left: 15px;
+    border: 1px solid rgb(56, 55, 100);
+    border-radius: 3px;
+    font-size: 14px;
+  }
+  
+  .date-form button {
+    padding: 10px 20px;
+    background-color: rgb(56, 55, 100);
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+  }
+  
+  .date-form button:hover {
+    background-color: rgb(44, 43, 87);
+  }
+  
