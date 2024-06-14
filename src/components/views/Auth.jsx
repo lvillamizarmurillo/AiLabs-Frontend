@@ -1,32 +1,26 @@
-import '../../assets/css/auth.css'
+import React from 'react';
+import '../../assets/css/auth.css';
+import logoAiLabs from "../../assets/img/navbar/Ai Labs logo recortado.png"
 
 function Auth() {
-
   return (
-    <>
-      <div class="container-auth">
-
-        <div class="form-side">
-
-          <img src="/src/assets/img/navbar/Ai Labs logo.png" alt="AI-Labs"/>
-
-          <form class="form">
-            <span class="input-span">
-            <label for="email" class="label">Email</label>
-            <input type="email" name="email" id="email" /></span>
-            <span class="input-span">
-            <label for="password" class="label">Contraseña</label>
-            <input type="password" name="password" id="password" /></span>
-            <input class="submit" type="submit" value="Iniciar Sesión" />
-            <span class="span"><a href="#">Olvidaste tu contraseña?</a></span>
-            <span class="span"><a href="#">Términos, condiciones y política de datos</a></span>
-          </form>
-
-        </div>
-        <div class="image"></div>
+    <div className="container-auth">
+      
+      <div className="container12">
+        <div className="title12">
+          <img src={logoAiLabs} alt="" />
+        <h3>
+          AI - LABS
+        </h3>
       </div>
-
-    </>
+        <form className="form12" action="">
+          <input placeholder="Username" className="username12 input12" type="text" />
+          <input placeholder="Password" className="password12 input12" type="password" />
+          <button className="btn12" type="submit">Login</button>
+          <a href="">politica y privacidad</a>
+        </form>
+      </div>
+    </div>
   );
 }
 

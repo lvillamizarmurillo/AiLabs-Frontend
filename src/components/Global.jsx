@@ -11,17 +11,13 @@ import waring from "../assets/img/navbar/waring.png";
 const Navbar = ({ userSignedIn }) => {
   const [profileMenuOpen, setProfileMenuOpen] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
-  const [isRecommendModalOpen, setRecommendModalOpen] = useState(false);
   const [isWalletModalOpen, setWalletModalOpen] = useState(false);
-  const [copySuccess, setCopySuccess] = useState('');
   const [isEditable, setIsEditable] = useState(false);
   const [walletLink, setWalletLink] = useState('https://mi-sitio.com/wallet'); // Link de la wallet
   const [walletLink2, setWalletLink2] = useState('https://mi-sitio.com/wallet2'); // Segundo link de la wallet
   const [isMissingData, setIsMissingData] = useState(false);
   const [missingField1, setMissingField1] = useState('');
   const [missingField2, setMissingField2] = useState('');
-
-  const referralUrl = 'http://localhost:5004/register'; // URL de referido
 
   useEffect(() => {
     // Simular lógica para verificar si hay datos faltantes
@@ -37,23 +33,8 @@ const Navbar = ({ userSignedIn }) => {
     setIsOpen(!isOpen);
   };
 
-  const toggleRecommendModal = () => {
-    setRecommendModalOpen(!isRecommendModalOpen);
-  };
-
   const toggleWalletModal = () => {
     setWalletModalOpen(!isWalletModalOpen);
-  };
-
-  const copyToClipboard = () => {
-    navigator.clipboard.writeText(referralUrl).then(() => {
-      setCopySuccess(`Link de de recomendación copiado`);
-      setTimeout(() => {
-        setCopySuccess('');
-      }, 2000);
-    }, () => {
-      setCopySuccess('Error al copiar el link');
-    });
   };
 
   const handleEditWalletLink = () => {
@@ -102,50 +83,28 @@ const Navbar = ({ userSignedIn }) => {
           </div>
         </div>
         <div className="container-fluid">
-          <div className="text-reference">
-            <h5>mi equipo</h5>
-            <p>4</p>
-          </div>
-          <div className="text-reference">
-            <h5>Nfts</h5>
-            <p>1</p>
-          </div>
-          <div>
-            <a className='containerButton' href="#"><button className='button-navb2' onClick={toggleRecommendModal}><p>Recomendar</p></button></a>
-          </div>
-        </div>
-        <div className="container-fluid-2">
-          <a className="btn" href="#"><button className='button-navb2' onClick={toggleWalletModal}><p>Wallet</p></button></a>
-          <div className="profile-menu-container">
-            <img 
-              src={iconUser}
-              alt="Profile" 
-              className="profile-image" 
-              onClick={toggleProfileMenu} 
-            />
-            {profileMenuOpen && (
-              <div className="profile-dropdown-menu">
-                <ul>
-                  <li><a href="/profile">Mi perfil</a></li>
-                  <li><a href="/wallet">Mi wallet</a></li>
-                  <li><a href="/logout">Salir</a></li>
-                </ul>
-              </div>
-            )}
+          <div className="container-fluid-2">
+            <a className="btn" href="#"><button className='button-navb2' onClick={toggleWalletModal}><p>Wallet</p></button></a>
+            <div className="profile-menu-container">
+              <img 
+                src={iconUser}
+                alt="Profile" 
+                className="profile-image" 
+                onClick={toggleProfileMenu} 
+              />
+              {profileMenuOpen && (
+                <div className="profile-dropdown-menu">
+                  <ul>
+                    <li><a href="/profile">Mi perfil</a></li>
+                    <li><a href="/wallet">Mi wallet</a></li>
+                    <li><a href="/logout">Salir</a></li>
+                  </ul>
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </nav>
-
-      {isRecommendModalOpen && (
-        <div className="modal">
-          <div className="modal-content">
-            <span className="close-btn" onClick={toggleRecommendModal}>&times;</span>
-            <p>Haz clic en el botón para copiar el link de referido:</p>
-            {copySuccess && <span className="copy-success"><img src={check} alt="Check" />{copySuccess}</span>}
-            <button className="copy-btn" onClick={copyToClipboard}>Copiar Link</button>
-          </div>
-        </div>
-      )}
 
       {isWalletModalOpen && (
         <div className="modal">
@@ -177,7 +136,7 @@ const Navbar = ({ userSignedIn }) => {
         <div className="modal">
           <div className="modal-content">
             <span className="close-btn" onClick={() => setIsMissingData(false)}>&times;</span>
-            <p className="warning"><img src={waring} alt="Warning" /> Necesitas llenar estos campos para finalizar el registro</p>
+            <p className="warning"> Necesitas llenar estos campos para finalizar el registro</p>
             <input
               type="text"
               placeholder="Trading Account"

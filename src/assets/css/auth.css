@@ -1,180 +1,108 @@
-.container-auth {
-  display: grid;
-  grid-template-columns: 1fr;
-  background: linear-gradient(to right, rgb(24, 86, 179), #2f5794);
-  
-  @media (min-width: 1200px) {
-    grid-template-columns: 30% 70%;
-  }
+.container-auth{
+  background: url('/src/assets/img/fondoAuth.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100vh; /* Esto establece la altura al 100% del viewport */
 }
 
-.form-side {
-
-  width: 90%;
-  margin: 50px auto;
-  display: grid;
-  justify-self: center;
-
-  img {
-    max-width: 190px;
-    justify-self: center;
-    margin: 10px auto 40px;
-
-    @media (min-width: 768px) {
-      margin: 10px auto;
-    }
-  }
-
-  .form {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    max-width: 750px;
-    margin: 0 auto;
-    padding: 20px;
-    border-radius: 20px;
-    position: relative;
-    background-color: #1a1a1a;
-    color: #000;
-    border: 1px solid #333;
-  }
-  
-  .title {
-    font-size: 28px;
-    font-weight: 600;
-    letter-spacing: -1px;
-    position: relative;
-    display: flex;
-    align-items: center;
-    padding-left: 30px;
-    color: #00bfff;
-  }
-  
-  .title::before {
-    width: 18px;
-    height: 18px;
-  }
-  
-  .title::after {
-    width: 18px;
-    height: 18px;
-    animation: pulse 1s linear infinite;
-  }
-  
-  .title::before,
-  .title::after {
-    position: absolute;
-    content: "";
-    height: 16px;
-    width: 16px;
-    border-radius: 50%;
-    left: 0px;
-    background-color: #00bfff;
-  }
-  
-  .message, 
-  .signin {
-    font-size: 14.5px;
-    color: rgba(255, 255, 255, 0.7);
-  }
-  
-  .signin {
-    text-align: center;
-  }
-  
-  .signin a:hover {
-    text-decoration: underline royalblue;
-  }
-  
-  .signin a {
-    color: #00bfff;
-  }
-  
-  .flex {
-    display: flex;
-    width: 100%;
-    gap: 6px;
-  }
-  
-  .form label {
-    position: relative;
-  }
-  
-  .form label .input {
-    background-color: #333;
-    color: #000;
-    width: 100%;
-    padding: 20px 05px 05px 10px;
-    outline: 0;
-    border: 1px solid rgba(105, 105, 105, 0.397);
-    border-radius: 10px;
-  }
-  
-  .form label .input + span {
-    color: rgba(255, 255, 255, 0.5);
-    position: absolute;
-    left: 10px;
-    top: 0px;
-    font-size: 0.9em;
-    cursor: text;
-    transition: 0.3s ease;
-  }
-  
-  .form label .input:placeholder-shown + span {
-    top: 12.5px;
-    font-size: 0.9em;
-  }
-  
-  .form label .input:focus + span,
-  .form label .input:valid + span {
-    color: #00bfff;
-    top: 0px;
-    font-size: 0.7em;
-    font-weight: 600;
-  }
-  
-  .input {
-    font-size: medium;
-  }
-  
-  .submit {
-    border: none;
-    outline: none;
-    padding: 10px;
-    border-radius: 10px;
-    color: #fff;
-    font-size: 16px;
-    transform: .3s ease;
-    background-color: #00bfff;
-  }
-  
-  .submit:hover {
-    background-color: #00bfff96;
-  }
-  
-  @keyframes pulse {
-    from {
-      transform: scale(0.9);
-      opacity: 1;
-    }
-  
-    to {
-      transform: scale(1.8);
-      opacity: 0;
-    }
-  }
-
+::selection {
+  background-color: gray;
 }
 
-.image {
-  display: none;
+.container12 {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 
-  @media (min-width: 1200px) {
-    display: grid;
-    width: 100%;
-    height: 100vh;
-    background: url('/src/assets/img/blur-1853262_1280.jpg');
-    background-color: black;
-  }
+.title12{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 400px;
+  margin-top: 150px;
+}
 
+.title12 img{
+  width: 120px;
+  height: 100px;
+}
+
+.title12 h3{
+  margin-top: 100px;
+  color: white;
+  font-family: "Orbitron";
+  font-size: 40px;
+  height: 100px;
+}
+
+.form12 {
+  margin-top: -60px;
+  padding-top: 20px;
+  width: 400px;
+  height: 260px;
+  background-color: #ffffffa4;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 0.5rem;
+}
+
+.form12 a{
+  margin-top: 10px;
+  color: white;
+}
+
+.input12 {
+  margin: 0.5rem 0;
+  padding: 0.5rem 0.5rem;
+  width: 20rem;
+  background-color: inherit;
+  color: rgb(0, 0, 0);
+  border: none;
+  outline: none;
+}
+
+.username12{
+  border-bottom: 1px solid rgb(0, 0, 0);
+  transition: all 400ms;
+}
+
+.username12:hover {
+  background-color: #cacaca;
+  border: none;
+  border-radius: 0.5rem;
+}
+
+.password12 {
+  border-bottom: 1px solid rgb(0, 0, 0);
+  transition: all 400ms;
+}
+
+.password12:hover {
+  background-color: #cacaca;
+  border: none;
+  border-radius: 0.5rem;
+}
+
+.btn12 {
+  height: 3rem;
+  width: 20rem;
+  margin-top: 15px;
+  background-image: linear-gradient(to right, rgb(0, 118, 187), #003780); /* Aplica el gradiente como imagen de fondo */
+  border-radius: 0.5rem;
+  border: none;
+  font-size: 1.2rem;
+  color: white;
+  transition: all 400ms;
+  box-shadow: 0 0 10px  rgb(0, 118, 187), 0 0 10px rgb(0, 118, 187);
+}
+
+.btn12:hover {
+  background-color: rgb(18, 187, 199);
+  box-shadow: none;
 }

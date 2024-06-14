@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import '../../../assets/css/navPaid.css';
-import AllFees from './Fees/LoadAllFee.jsx';
 import PendingFees from './Fees/LoadFeesPending.jsx'; 
 import FeesPaid from './Fees/LoadFeesPaid.jsx'; 
+import CardsFees from './Fees/CardsFees.jsx';
 
 function NavPaid() {
   const [activeButton, setActiveButton] = useState(null);
@@ -31,7 +31,7 @@ function NavPaid() {
         </div>
       </div>
       <div>
-        {activeButton === 'Pagar Fees' && <AllFees />}
+        {activeButton === 'Pagar Fees' && <CardsFees />}
         {activeButton === 'Vista de pago' && <PendingFees />}
         {activeButton === 'Reiniciar' && <FeesPaid />}
         {/* Puedes agregar más componentes aquí para otros botones */}
