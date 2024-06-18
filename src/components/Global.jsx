@@ -21,7 +21,7 @@ const Navbar = ({ userSignedIn }) => {
 
   useEffect(() => {
     // Simular lógica para verificar si hay datos faltantes
-    const userHasMissingData = true; // Cambia esto según la lógica de tu aplicación
+    const userHasMissingData = false; // Cambia esto según la lógica de tu aplicación
     setIsMissingData(userHasMissingData);
   }, []);
 

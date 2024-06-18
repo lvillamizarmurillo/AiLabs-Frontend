@@ -16,8 +16,9 @@ function Auth() {
         <form className="form12" action="">
           <input placeholder="Username" className="username12 input12" type="text" />
           <input placeholder="Password" className="password12 input12" type="password" />
+
           <button className="btn12" type="submit">Login</button>
-          <a href="">politica y privacidad</a>
+          <a href="">Política y privacidad</a>
         </form>
       </div>
     </div>

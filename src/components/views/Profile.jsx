@@ -1,128 +1,69 @@
 import React, { useState } from 'react';
 import Navbar from '../Global.jsx';
-import '../../assets/css/profile.css'
-import editIcon from "../../assets/img/navbar/lapiz.png";
+import '../../assets/css/home.css'; 
+import '../../assets/css/profile.css'; 
+import imagenFondoProfile from "../../assets/img/imagenFondoProfile.jpg";
+import fondoIconoProfile from "../../assets/img/fondoIconoProfile.png";
+import InfoPersonalProfileModule from './modules/ProfileInfoModule.jsx';
+import ProfilePasswordModule from './modules/ProfilePasswordModule.jsx';
+import ProfileWalletModule from './modules/ProfileWalletModule.jsx';
 
 function Profile() {
+  const [activeTab, setActiveTab] = useState('infoPersonal');
 
-  const [isEditable, setIsEditable] = useState(false);
-  const [isEditableAcc, setIsEditableAcc] = useState(false);
-  const [isEditablePass, setIsEditablePass] = useState(false);
-
-  const handleEditWalletLink = () => {
-    setIsEditable(true);
+  const handleTabChange = (tabName) => {
+    setActiveTab(tabName);
   };
 
-  const handleSaveWalletLink = () => {
-    setIsEditable(false);
-    // Aquí puedes agregar cualquier lógica adicional para guardar el link de la wallet
-  };
-
-  const handleEditAccount = () => {
-    setIsEditableAcc(true);
-  };
-
-  const handleSaveAccount = () => {
-    setIsEditableAcc(false);
-    // Aquí puedes agregar cualquier lógica adicional para guardar el link de la wallet
-  };
-
-  const handleEditPass = () => {
-    setIsEditablePass(true);
-  };
-
-  const handleSavePass = () => {
-    setIsEditablePass(false);
-    // Aquí puedes agregar cualquier lógica adicional para guardar el link de la wallet
+  // Función para renderizar el contenido según el tab activo
+  const renderContent = () => {
+    switch (activeTab) {
+      case 'infoPersonal':
+        return <InfoPersonalProfileModule />;
+      case 'Password':
+        return <ProfilePasswordModule />;
+      case 'Wallet20':
+        return <ProfileWalletModule />;
+      default:
+        return null;
+    }
   };
 
   return (
     <>
       <Navbar />
-
-      <div className="informacion">
-        <img src="src/assets/img/user.png" alt="" />
-        <h2>Perfil de Usuario</h2>
-
-        <div className='dataBasic'>
-          <div className="modal-content">
-            <h3>Información Personal</h3>
-            <p>Nombres:</p>
-            <input
-              type="text"
-              value="Master"
-              disabled={!isEditable}
-              className={!isEditable ? 'input-disabled' : ''}
-            />
-            <p>Apellidos:</p>
-            <input
-              type="text"
-              value="Lider"
-              disabled={!isEditable}
-              className={!isEditable ? 'input-disabled' : ''}
-            />
-            <p>Celular:</p>
-            <input
-              type="text"
-              value="3158234567"
-              disabled={!isEditable}
-              className={!isEditable ? 'input-disabled' : ''}
-            />
-
-            <img src={editIcon} alt="Edit" className="edit-icon" onClick={handleEditWalletLink} />
-            {isEditable && <button className="save-btn" onClick={handleSaveWalletLink}>Guardar</button>}
+      <div className="oficina-virtual">
+        <h2>Edit Profile</h2>
+      </div>
+      <div className="boxProfile">
+        <div className="fotoProfile">
+          <img src={imagenFondoProfile} alt="Background profile" />
+        </div>
+        <div className="infoBoxProfile">
+          <div className='primerLineaTextInfo'>
+            <h3>ID: 4295</h3>
+            <h3>Mastercami</h3>
+            <h3>bernalmurillocamilo@gmail.com</h3>
+            <h3>KYC: not verified</h3>
           </div>
-          
-          <br/>
-
-          <div className="modal-content">
-            <h3>Información de Cuentas</h3>
-            <p>Binance Id:</p>
-            <input
-              type="text"
-              value="3453458"
-              disabled={!isEditableAcc}
-              className={!isEditableAcc ? 'input-disabled' : ''}
-            />
-            <p>Wallet BEP20:</p>
-            <input
-              type="text"
-              value="0x2A55a45op6i123s356i46k4k45l3w76Rt"
-              disabled={!isEditableAcc}
-              className={!isEditableAcc ? 'input-disabled' : ''}
-            />
-
-            <img src={editIcon} alt="Edit" className="edit-icon" onClick={handleEditAccount} />
-            {isEditableAcc && <button className="save-btn" onClick={handleSaveAccount}>Guardar</button>}
+          <div className='segundaLineaTextInfo'>
+            <h3>Customer</h3>
+            <h3> Direct: 0</h3>
           </div>
-
-          <br/>
-
-          <div className="modal-content">
-            <h3>Cambiar Contraseña</h3>
-            <p>Contraseña Anterior:</p>
-            <input
-              type="password"
-              value="12345678"
-              disabled={!isEditablePass}
-              className={!isEditablePass ? 'input-disabled' : ''}
-            />
-            <p>Nueva Contraseña:</p>
-            <input
-              type="password"
-              value=""
-              disabled={!isEditablePass}
-              className={!isEditablePass ? 'input-disabled' : ''}
-            />
-            <label>Por favor utilice contraseñas seguras, incluir letras mayúscula, minúsculas, numeros y caracteres especiales</label>
-
-            <img src={editIcon} alt="Edit" className="edit-icon" onClick={handleEditPass} />
-            {isEditablePass && <button className="save-btn" onClick={handleSavePass}>Guardar</button>}
-          </div>
-          
+        </div>
+        <div className="imgenUserBox">
+          <img src={fondoIconoProfile} alt="" />
         </div>
       </div>
-      <br/>
+      <div className="infoBoxUserEdit">
+        <button className={activeTab === 'infoPersonal' ? 'active' : ''} onClick={() => handleTabChange('infoPersonal')}>Info Personal</button>
+        <button className={activeTab === 'Password' ? 'active' : ''} onClick={() => handleTabChange('Password')}>Password</button>
+        <button className={activeTab === 'Wallet20' ? 'active' : ''} onClick={() => handleTabChange('Wallet20')}>Wallet</button>
+      </div>
+      {renderContent()}
+      <div className="spaceButton">
+        
+      </div>
     </>
   );
 }

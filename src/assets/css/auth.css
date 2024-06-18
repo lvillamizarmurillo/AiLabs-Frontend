@@ -1,5 +1,5 @@
 .container-auth{
-  background: url('/src/assets/img/fondoAuth.jpg');
+  background: url('/src/assets/img/imagePage4.jpeg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -45,7 +45,7 @@
   padding-top: 20px;
   width: 400px;
   height: 260px;
-  background-color: #ffffffa4;
+  background-color: #080808b9;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -62,7 +62,7 @@
   padding: 0.5rem 0.5rem;
   width: 20rem;
   background-color: inherit;
-  color: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
   border: none;
   outline: none;
 }

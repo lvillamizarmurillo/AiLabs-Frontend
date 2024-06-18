@@ -34,7 +34,7 @@ body {
       grid-template-columns: 1fr;
       width: 90%;
       justify-self: center;
-      border-bottom: 1px solid rgb(231, 226, 226);
+      background: #ffffff00;
       padding-bottom: 15px;
 
       @media (min-width:768px) {
@@ -48,7 +48,7 @@ body {
         font-size: 18px;
         font-family: inherit;
         text-align: center;
-        color: #1bdbfd;
+        color: #ffffff;
         min-height: 44px;
         width: 100%;
         max-width: 150px;
@@ -121,7 +121,7 @@ body {
       }
       .wrapper .btn::before,
       .wrapper .btn::after {
-        background: #FFFFFF;
+        background: #ffffff00;
         /* content: "";
         display: block;
         position: absolute;
@@ -142,7 +142,7 @@ body {
         border-radius: 70px;
         position: absolute;
         color: #908b8b;
-        background: #fff;
+        background: #ffffff00;
         z-index: 2;
         padding: 0 15px;
         box-shadow: 0 10px 30px rgba(65, 72, 86, 0.05);
@@ -166,7 +166,7 @@ body {
         content: "";
         width: 20px;
         height: 20px;
-        background: #fff;
+        background: #ffffff00;
         border-radius: 3px;
         position: absolute;
         left: 50%;
@@ -222,7 +222,7 @@ body {
     margin: 50px auto 30px;
     width: 90%;
     height: 2px;
-    background-color: #999;
+        background: #ffffff00;
   }
 
   .video {

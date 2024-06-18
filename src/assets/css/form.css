@@ -1,163 +1,109 @@
-@import url('https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400..700;1,400..700&display=swap');
-
-.container-form {
-  display: grid;
-  width: 100%;
-  height: 100%;
-  min-height: 100vh;
-  margin:0px;   
-  background: url('/src/assets/img/blur-1853262_1280.jpg');
-  background-color: black;
+.container-auth1{
+  background: url('/src/assets/img/imagePage3.jpeg');
   background-size: cover;
+  background-position: center;
   background-repeat: no-repeat;
-  background-attachment: fixed;
+  width: 100%;
+  height: 100vh; /* Esto establece la altura al 100% del viewport */
 }
 
-.form-side {
+::selection {
+  background-color: gray;
+}
 
-  width: 90%;
-  margin: 50px auto;
-  display: grid;
-  justify-self: center;
+.container13 {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 
-  .form {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    width: 80%;
-    max-width: 540px;
-    margin: 0 auto;
-    padding: 20px;
-    border-radius: 20px;
-    position: relative;
-    background-color: #FFF;
-    color: #000;
-  }
+.title13{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 400px;
+}
 
-  .title {
-    font-size: 28px;
-    font-weight: 600;
-    letter-spacing: -1px;
-    position: relative;
-    display: flex;
-    align-items: center;
-    padding-left: 30px;
-    color: #00bfff;
-  }
+.title13 img{
+  width: 120px;
+  height: 100px;
+}
 
-  .title::before {
-    width: 18px;
-    height: 18px;
-  }
+.title13 h3{
+  margin-top: 100px;
+  color: white;
+  font-family: "Orbitron";
+  font-size: 40px;
+  height: 100px;
+}
 
-  .title::after {
-    width: 18px;
-    height: 18px;
-    animation: pulse 1s linear infinite;
-  }
+.form13 {
+  margin-top: -60px;
+  padding-top: 20px;
+  width: 400px;
+  height: 600px;
+  background-color: #ffffffa4;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 0.5rem;
+}
 
-  .title::before,
-  .title::after {
-    position: absolute;
-    content: "";
-    height: 16px;
-    width: 16px;
-    border-radius: 50%;
-    left: 0px;
-    background-color: #00bfff;
-  }
+.form13 a{
+  margin-top: 10px;
+  margin-bottom: 20px;
+  color: white;
+}
 
-  .message, 
-  .signin {
-    font-size: 14.5px;
-    color: rgba(0, 0, 0, 0.7);
-  }
+.input13 {
+  margin: 0.5rem 0;
+  padding: 0.5rem 0.5rem;
+  width: 20rem;
+  background-color: inherit;
+  color: rgb(0, 0, 0);
+  border: none;
+  outline: none;
+}
 
-  .signin {
-    text-align: center;
-  }
+.username13,.nombres13,.apellidos13,.correo13,.password13,.contraseña13,.movil13,.idBinance13,.wallet13{
+  border-bottom: 1px solid rgb(0, 0, 0);
+  transition: all 400ms;
+}
 
-  .signin a:hover {
-    text-decoration: underline royalblue;
-  }
+.username13:hover,.nombres13:hover,.apellidos13:hover,.correo13:hover,.password13:hover,.contraseña13:hover,.movil13:hover,.idBinance13:hover,.wallet13:hover {
+  background-color: #cacaca;
+  border: none;
+  border-radius: 0.5rem;
+}
 
-  .signin a {
-    color: #00bfff;
-  }
+.password13 {
+  border-bottom: 1px solid rgb(0, 0, 0);
+  transition: all 400ms;
+}
 
-  .flex {
-    display: flex;
-    width: 100%;
-    gap: 6px;
-  }
+.password13:hover {
+  background-color: #cacaca;
+  border: none;
+  border-radius: 0.5rem;
+}
 
-  .form label {
-    position: relative;
-  }
+.btn13 {
+  height: 3rem;
+  padding: 15px;
+  width: 20rem;
+  margin-top: 15px;
+  background-image: linear-gradient(to right, rgb(0, 118, 187), #003780); /* Aplica el gradiente como imagen de fondo */
+  border-radius: 0.5rem;
+  border: none;
+  font-size: 1.2rem;
+  color: white;
+  transition: all 400ms;
+  box-shadow: 0 0 10px  rgb(0, 118, 187), 0 0 10px rgb(0, 118, 187);
+}
 
-  .form label .input-reg {
-    background-color: #fff;
-    color: #000;
-    width: 98%;
-    padding: 20px 05px 05px 10px;
-    outline: 0;
-    border: 1px solid rgba(105, 105, 105, 0.397);
-    border-radius: 10px;
-  }
-
-  .form label .input-reg + span {
-    color: rgba(255, 255, 255, 0.5);
-    position: absolute;
-    left: 10px;
-    right: 10px;
-    top: 0px;
-    font-size: 0.9em;
-    cursor: text;
-    transition: 0.3s ease;
-  }
-
-  .form label .input-reg:placeholder-shown + span {
-    top: 12.5px;
-    font-size: 0.9em;
-  }
-
-  .form label .input-reg:focus + span,
-  .form label .input-reg:valid + span {
-    color: #00bfff;
-    top: 0px;
-    font-size: 0.7em;
-    font-weight: 600;
-  }
-
-  .input-reg {
-    font-size: medium;
-  }
-
-  .submit {
-    border: none;
-    outline: none;
-    padding: 10px;
-    border-radius: 10px;
-    color: #fff;
-    font-size: 16px;
-    transform: .3s ease;
-    background-color: #00bfff;
-  }
-
-  .submit:hover {
-    background-color: #00bfff96;
-  }
-
-  @keyframes pulse {
-    from {
-      transform: scale(0.9);
-      opacity: 1;
-    }
-
-    to {
-      transform: scale(1.8);
-      opacity: 0;
-    }
-  }
-
+.btn13:hover {
+  background-color: rgb(18, 187, 199);
+  box-shadow: none;
 }
