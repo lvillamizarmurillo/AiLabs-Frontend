@@ -42,7 +42,7 @@ function Admin() {
 
   }
 
-  loginIn();
+  //loginIn();
 
   const [activeButton, setActiveButton] = useState(null);
 

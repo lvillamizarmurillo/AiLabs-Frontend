@@ -25,7 +25,7 @@ function Auth() {
     })).json();
 
     if(response.status == 200) {
-        localStorage.setItem('authToken',response.message)
+        localStorage.setItem('authToken',response.message);
 
         const getUser = async()=>{
 
@@ -44,6 +44,7 @@ function Auth() {
         
             if(response.status == 200) {
                 console.log(response.message.rol);
+                localStorage.setItem('rolUser',response.message);
   
                 const rol = response.message.rol;
                 if (rol === 'user') {
