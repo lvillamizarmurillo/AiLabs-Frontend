@@ -5,6 +5,7 @@ import iconUser from "../assets/img/navbar/iconUser.png";
 import ailabsLogo from "../assets/img/navbar/Ai Labs logo.png";
 import iconMenu from "../assets/img/navbar/iconMenu.png";
 import editIcon from "../assets/img/navbar/lapiz.png";
+import { logout } from './views/logout';
 import check from "../assets/img/navbar/check.png";
 import waring from "../assets/img/navbar/waring.png";
 
@@ -18,6 +19,11 @@ const Navbar = ({ userSignedIn }) => {
   const [isMissingData, setIsMissingData] = useState(false);
   const [missingField1, setMissingField1] = useState('');
   const [missingField2, setMissingField2] = useState('');
+
+  const handleLogout = (e) => {
+    e.preventDefault();
+    logout();
+  };
 
   useEffect(() => {
     // Simular lógica para verificar si hay datos faltantes
@@ -97,7 +103,7 @@ const Navbar = ({ userSignedIn }) => {
                   <ul>
                     <li><a href="/profile">Mi perfil</a></li>
                     <li><a href="/wallet">Mi wallet</a></li>
-                    <li><a href="/logout">Salir</a></li>
+                    <li onClick={handleLogout}><a href='/logout'>Salir</a></li>
                   </ul>
                 </div>
               )}
