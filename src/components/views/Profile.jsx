@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Navbar from '../Global.jsx';
 import '../../assets/css/home.css'; 
 import '../../assets/css/profile.css'; 
@@ -7,8 +7,19 @@ import fondoIconoProfile from "../../assets/img/fondoIconoProfile.png";
 import InfoPersonalProfileModule from './modules/ProfileInfoModule.jsx';
 import ProfilePasswordModule from './modules/ProfilePasswordModule.jsx';
 import ProfileWalletModule from './modules/ProfileWalletModule.jsx';
+import { useNavigate } from 'react-router-dom';
 
 function Profile() {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const storedRole = localStorage.getItem('rolUser');
+    if (storedRole !== 'user') {
+      localStorage.clear();
+      navigate('/auth');
+    }
+  }, []);
+
   const [activeTab, setActiveTab] = useState('infoPersonal');
 
   const handleTabChange = (tabName) => {

@@ -10,6 +10,7 @@ import billetera from "../../assets/img/billetera.png";
 import grafica2 from "../../assets/img/grafica2.png";
 import grafica3 from "../../assets/img/grafica3.png";
 import grafica4 from "../../assets/img/grafica4.png";
+import { useNavigate } from 'react-router-dom';
 
 const env = {
   VITE_HOSTNAME: import.meta.env.VITE_HOSTNAME,
@@ -22,6 +23,15 @@ function Home() {
   const [copied, setCopied] = useState(false);
   const [data, setData] = useState(null);
   const token = localStorage.getItem('authToken');
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const storedRole = localStorage.getItem('rolUser');
+    if (storedRole !== 'user') {
+      localStorage.clear();
+      navigate('/auth');
+    }
+  }, []);
 
   useEffect(() => {
     const loadDashboard = async () => {

@@ -1,6 +1,7 @@
 export const logout = () => {
   // Limpiar la información de autenticación del almacenamiento local
   localStorage.removeItem('authToken');
+  localStorage.removeItem('rolUser');
   // O limpiar cookies, si las usas:
   // document.cookie = 'authToken=; Max-Age=0; path=/;';
   
