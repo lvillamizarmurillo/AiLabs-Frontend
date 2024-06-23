@@ -3,6 +3,11 @@ import '../../assets/css/auth.css';
 import { useNavigate } from 'react-router-dom';
 import logoAiLabs from "../../assets/img/navbar/Ai Labs logo recortado.png";
 
+const env = {
+  HOSTNAME_BACKEND: import.meta.env.VITE_HOSTNAME_BACKEND,
+  PORT_BACKEND: import.meta.env.VITE_PORT_BACKEND
+}
+
 function Auth() {
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
@@ -11,8 +16,7 @@ function Auth() {
   const [error, setError] = useState(null);
 
   const loginIn = async(e)=>{
-
-    const response = await(await fetch('http://localhost:5006/ai-labs/login', {
+    const response = await(await fetch(`http://${env.HOSTNAME_BACKEND}:${env.PORT_BACKEND}/ai-labs/login`, {
         method: "POST",
         headers: {
             'Content-Type': 'application/json',
@@ -33,7 +37,7 @@ function Auth() {
 
           try {
             
-            const response = await(await fetch('http://localhost:5006/ai-labs/user', {
+            const response = await(await fetch(`http://${env.HOSTNAME_BACKEND}:${env.PORT_BACKEND}/ai-labs/user`, {
                 method: "GET",
                 headers: {
                     'Content-Type': 'application/json',

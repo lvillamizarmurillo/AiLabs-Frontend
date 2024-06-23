@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Navbar from '../Global.jsx';
 import '../../assets/css/home.css';
 import teamRefer from "../../assets/img/teamRefer.png";
@@ -11,16 +11,58 @@ import grafica2 from "../../assets/img/grafica2.png";
 import grafica3 from "../../assets/img/grafica3.png";
 import grafica4 from "../../assets/img/grafica4.png";
 
+const env = {
+  VITE_HOSTNAME: import.meta.env.VITE_HOSTNAME,
+  VITE_PORT_FRONTEND: import.meta.env.VITE_PORT_FRONTEND,
+  HOSTNAME_BACKEND: import.meta.env.VITE_HOSTNAME_BACKEND,
+  PORT_BACKEND: import.meta.env.VITE_PORT_BACKEND
+}
+
 function Home() {
   const [copied, setCopied] = useState(false);
+  const [data, setData] = useState(null);
+  const token = localStorage.getItem('authToken');
 
-  const handleCopyLink = () => {
-    // Lógica para copiar el link al portapapeles
-    navigator.clipboard.writeText('http://localhost:5004/register'); // URL de ejemplo, reemplazar con el enlace correcto
-    setCopied(true);
-    setTimeout(() => {
-      setCopied(false);
-    }, 3000); // Ocultar el mensaje después de 3 segundos
+  useEffect(() => {
+    const loadDashboard = async () => {
+      const response = await (await fetch(`http://${env.HOSTNAME_BACKEND}:${env.PORT_BACKEND}/ai-labs/user`, {
+        method: "GET",
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept-version': '1.0.2',
+          'Authorization': `Bearer ${token}`
+        }
+      })).json();
+
+      if (response.status === 200) {
+        setData(response.message);
+      } else {
+        console.log(response);
+      }
+    };
+
+    loadDashboard();
+  }, []); // Solo se ejecutará una vez cuando el componente se monte
+  const loadLinkRefer = async (e) => {
+    e.preventDefault();
+    const response = await (await fetch(`http://${env.HOSTNAME_BACKEND}:${env.PORT_BACKEND}/ai-labs/user`, {
+      method: "GET",
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept-version': '1.0.1',
+        'Authorization': `Bearer ${token}`
+      }
+    })).json();
+
+    if (response.status === 200) {
+      navigator.clipboard.writeText(`http://${env.VITE_HOSTNAME}:${env.VITE_PORT_FRONTEND}/register/${response.message}`); // URL de ejemplo, reemplazar con el enlace correcto
+      setCopied(true);
+      setTimeout(() => {
+        setCopied(false);
+      }, 3000); 
+    } else {
+      console.log(response);
+    }
   };
 
   return (
@@ -50,7 +92,7 @@ function Home() {
           </p>
         </div>
         <div className="botton-para-referido">
-          <button className="Btn" onClick={handleCopyLink}>
+          <button className="Btn" onClick={loadLinkRefer}>
             <svg viewBox="0 0 512 512" className="svgIcon" height="1em"><path d="M288 448H64V224h64V160H64c-35.3 0-64 28.7-64 64V448c0 35.3 28.7 64 64 64H288c35.3 0 64-28.7 64-64V384H288v64zm-64-96H448c35.3 0 64-28.7 64-64V64c0-35.3-28.7-64-64-64H224c-35.3 0-64 28.7-64 64V288c0 35.3 28.7 64 64 64z"></path></svg>
             <p className="text">COPY</p>
             <span className="effect"></span>
@@ -68,7 +110,7 @@ function Home() {
                 CAPITAL OPERATIVO
               </h3>
               <p>
-                0.00 USDT
+                {data ? `${data.capitalOperativo.toFixed(2)} USDT` : '0.00 USDT'}
               </p>
             </div>
           </div>
@@ -81,7 +123,7 @@ function Home() {
                 RENTABILIDAD SEMANAL
               </h3>
               <p>
-                0.00 USDT
+                {data ? `${data.rentabilidadSemanal.toFixed(2)} USDT` : '0.00 USDT'}
               </p>
             </div>
           </div>
@@ -94,7 +136,7 @@ function Home() {
                 RENTABILIDAD ACUMULADA
               </h3>
               <p>
-                0.00 USDT
+                {data ? `${data.rentabilidadAcumulada.toFixed(2)} USDT` : '0.00 USDT'}
               </p>
             </div>
           </div>
@@ -109,7 +151,7 @@ function Home() {
                 CARTERA DIRECTA
               </h3>
               <p>
-                0.00 USDT
+                {data ? `${data.carteraDirecta.toFixed(2)} USDT` : '0.00 USDT'}
               </p>
             </div>
           </div>
@@ -122,7 +164,7 @@ function Home() {
                 CARTERA DE EQUIPO
               </h3>
               <p>
-                0.00 USDT
+                {data ? `${data.carteraEquipo.toFixed(2)} USDT` : '0.00 USDT'}
               </p>
             </div>
           </div>
@@ -135,7 +177,7 @@ function Home() {
                 ACUMULADO DE CARTERA
               </h3>
               <p>
-                0.00 USDT
+                {data ? `${data.acumuladoCartera.toFixed(2)} USDT` : '0.00 USDT'}
               </p>
             </div>
           </div>
@@ -150,7 +192,7 @@ function Home() {
                 GANANCIA SEMANAL
               </h3>
               <p>
-                0.00 USDT
+                {data ? `${data.gananciaSemanal.toFixed(2)} USDT` : '0.00 USDT'}
               </p>
             </div>
           </div>
@@ -163,7 +205,7 @@ function Home() {
                 GANANCIA TOTAL
               </h3>
               <p>
-                0.00 USDT
+                {data ? `${data.gananciaTotal.toFixed(2)} USDT` : '0.00 USDT'}
               </p>
             </div>
           </div>
@@ -176,7 +218,7 @@ function Home() {
                 TOTAL DE EQUIPO
               </h3>
               <p>
-                0 USERS
+                {data ? `${data.totalEquipo} USERS` : '0 USERS'}
               </p>
             </div>
           </div>
@@ -195,7 +237,7 @@ function Home() {
           <h2>
             Copiar enlace de zoom
           </h2>
-          <button className="Btn2" onClick={handleCopyLink}>
+          <button className="Btn2" onClick={loadLinkRefer}>
             <svg viewBox="0 0 512 512" className="svgIcon2" height="1em"><path d="M288 448H64V224h64V160H64c-35.3 0-64 28.7-64 64V448c0 35.3 28.7 64 64 64H288c35.3 0 64-28.7 64-64V384H288v64zm-64-96H448c35.3 0 64-28.7 64-64V64c0-35.3-28.7-64-64-64H224c-35.3 0-64 28.7-64 64V288c0 35.3 28.7 64 64 64z"></path></svg>
             <p className="text2">COPY LINK ZOOM</p>
             <span className="effect2"></span>

@@ -68,23 +68,23 @@
 }
 
 .username12{
-  border-bottom: 1px solid rgb(0, 0, 0);
+  border-bottom: 1px solid rgb(116, 114, 114);
   transition: all 400ms;
 }
 
 .username12:hover {
-  background-color: #cacaca;
+  background-color: #3d3d3d;
   border: none;
   border-radius: 0.5rem;
 }
 
 .password12 {
-  border-bottom: 1px solid rgb(0, 0, 0);
+  border-bottom: 1px solid rgb(116, 114, 114);
   transition: all 400ms;
 }
 
 .password12:hover {
-  background-color: #cacaca;
+  background-color: #3d3d3d;
   border: none;
   border-radius: 0.5rem;
 }

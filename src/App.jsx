@@ -12,9 +12,9 @@ function App() {
     <Router>
     <Routes>
       <Route path="/" element={<Home/>} />
-      <Route path="/register" element={<Register/>} />
+      <Route path="/register/:linkRefer" element={<Register/>} />
       <Route path="/auth" element={<Auth/>} />
-      <Route path="/form" element={<Form/>} />
+      <Route path="/form/:linkRefer" element={<Form/>} />
       <Route path="/team" element={<Team/>} />
       <Route path="/profile" element={<Profile/>} />
       <Route path="/admin" element={<Admin/>} />
