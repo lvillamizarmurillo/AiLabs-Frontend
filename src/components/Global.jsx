@@ -1,34 +1,139 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import '../assets/css/navbar.css';
 import iconUser from "../assets/img/navbar/iconUser.png";
 import ailabsLogo from "../assets/img/navbar/Ai Labs logo.png";
 import iconMenu from "../assets/img/navbar/iconMenu.png";
 import editIcon from "../assets/img/navbar/lapiz.png";
 import { logout } from './views/logout';
-import check from "../assets/img/navbar/check.png";
-import waring from "../assets/img/navbar/waring.png";
+
+const env = {
+  HOSTNAME_BACKEND: import.meta.env.VITE_HOSTNAME_BACKEND,
+  PORT_BACKEND: import.meta.env.VITE_PORT_BACKEND
+}
 
 const Navbar = ({ userSignedIn }) => {
   const [profileMenuOpen, setProfileMenuOpen] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [isWalletModalOpen, setWalletModalOpen] = useState(false);
   const [isEditable, setIsEditable] = useState(false);
-  const [walletLink, setWalletLink] = useState('https://mi-sitio.com/wallet'); // Link de la wallet
-  const [walletLink2, setWalletLink2] = useState('https://mi-sitio.com/wallet2'); // Segundo link de la wallet
+  const [walletLink, setWalletLink] = useState('');
+  const [walletLink2, setWalletLink2] = useState('');
+  const [idBinance, setIdBinance] = useState('');
+  const [walletUSDTBEP20, setWalletUSDTBEP20] = useState('');
+  const [idTradingAccount, setIdTradingAccount] = useState('');
+  const [idSuscription, setIdSuscription] = useState('');
   const [isMissingData, setIsMissingData] = useState(false);
   const [missingField1, setMissingField1] = useState('');
   const [missingField2, setMissingField2] = useState('');
+  const estadoUser = localStorage.getItem('estadoUser');
+  const token = localStorage.getItem('authToken');
 
   const handleLogout = (e) => {
     e.preventDefault();
     logout();
   };
 
+  const postWalletUser = async (e) => {
+    e.preventDefault();
+    // Validación de Id Binance o Wallet USDT BEP20
+    if (!idTradingAccount || !idSuscription) {
+      alert('Debe llenar ambos campos para continuar');
+      return;
+    }
+
+    const body = {
+      idTradingAccount: idTradingAccount,
+      idSuscription: idSuscription
+    };
+
+    const response = await fetch(`http://${env.HOSTNAME_BACKEND}:${env.PORT_BACKEND}/ai-labs/user`, {
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept-version': '1.0.0',
+        'Authorization': `Bearer ${token}`
+      },
+      body: JSON.stringify(body)
+    });
+
+    const data = await response.json();
+
+    if (response.status === 200) {
+      localStorage.setItem('estadoUser', "activo");
+      alert(data.message);
+      setIsMissingData(false); // Cerrar modal de datos faltantes
+    } else {
+      console.log(data);
+    }
+  };
+
+  const putWalletUser = async () => {
+
+    // Validación de Id Binance o Wallet USDT BEP20
+    if (!idBinance && !walletUSDTBEP20) {
+      alert('Debe llenar al menos uno de los campos: Id Binance o Wallet USDT BEP20');
+      return;
+    }
+
+    const body = {};
+  
+    if (idBinance) {
+      body.idBinance = idBinance;
+    }
+  
+    if (walletUSDTBEP20) {
+      body.walletUSDTBEP20 = walletUSDTBEP20;
+    }
+
+    const response = await fetch(`http://${env.HOSTNAME_BACKEND}:${env.PORT_BACKEND}/ai-labs/user`, {
+      method: "PUT",
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept-version': '1.0.1',
+        'Authorization': `Bearer ${token}`
+      },
+      body: JSON.stringify(body)
+    });
+
+    const data = await response.json();
+
+    if (response.status === 200) {
+      alert(data.message);
+      setWalletModalOpen(false); // Cerrar modal de wallet después de guardar
+    } else {
+      console.log(data);
+    }
+  };
+
+  const getWalletUser = async () => {
+    const response = await fetch(`http://${env.HOSTNAME_BACKEND}:${env.PORT_BACKEND}/ai-labs/user`, {
+      method: "GET",
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept-version': '1.0.3',
+        'Authorization': `Bearer ${token}`
+      }
+    });
+
+    const data = await response.json();
+
+    if (response.status === 200) {
+      setIdBinance(data.message.idBinance || '');
+      setWalletUSDTBEP20(data.message.walletUSDTBEP20 || '');
+      setWalletLink(idBinance);
+      setWalletLink2(walletUSDTBEP20);
+    } else {
+      console.log(data);
+    }
+  };
+
   useEffect(() => {
     // Simular lógica para verificar si hay datos faltantes
-    const userHasMissingData = false; // Cambia esto según la lógica de tu aplicación
+    let userHasMissingData = estadoUser == 'inactivo';
     setIsMissingData(userHasMissingData);
+
+    // Obtener datos del usuario al cargar el componente
+    getWalletUser();
   }, []);
 
   const toggleProfileMenu = () => {
@@ -47,20 +152,16 @@ const Navbar = ({ userSignedIn }) => {
     setIsEditable(true);
   };
 
-  const handleSaveWalletLink = () => {
+  const handleSaveWalletLink = (e) => {
+    e.preventDefault();
     setIsEditable(false);
-    // Aquí puedes agregar cualquier lógica adicional para guardar el link de la wallet
-  };
-
-  const handleSaveMissingData = () => {
-    setIsMissingData(false);
-    // Aquí puedes agregar lógica adicional para guardar los datos faltantes
+    putWalletUser(); // Guardar cambios al desactivar la edición
   };
 
   return (
     <>
       <nav className="navbar navbar-expand-sm navbar-light navbar-lewagon">
-        <div>
+      <div>
           <div className={`menu1 ${isOpen ? 'menu1-light' : ''}`}>
             <div className="menu">
               <button className="btn" onClick={toggleMenu}>
@@ -119,16 +220,16 @@ const Navbar = ({ userSignedIn }) => {
             <p>Wallet:</p>
             <input
               type="text"
-              value={walletLink}
-              onChange={(e) => setWalletLink(e.target.value)}
+              value={idBinance}
+              onChange={(e) => setIdBinance(e.target.value)}
               disabled={!isEditable}
               className={!isEditable ? 'input-disabled' : ''}
             />
             <p>Id Binance:</p>
             <input
               type="text"
-              value={walletLink2}
-              onChange={(e) => setWalletLink2(e.target.value)}
+              value={walletUSDTBEP20}
+              onChange={(e) => setWalletUSDTBEP20(e.target.value)}
               disabled={!isEditable}
               className={!isEditable ? 'input-disabled' : ''}
             />
@@ -146,16 +247,16 @@ const Navbar = ({ userSignedIn }) => {
             <input
               type="text"
               placeholder="Trading Account"
-              value={missingField1}
-              onChange={(e) => setMissingField1(e.target.value)}
+              value={idTradingAccount}
+              onChange={(e) => setIdTradingAccount(e.target.value)}
             />
             <input
               type="text"
               placeholder="Id Suscription"
-              value={missingField2}
-              onChange={(e) => setMissingField2(e.target.value)}
+              value={idSuscription}
+              onChange={(e) => setIdSuscription(e.target.value)}
             />
-            <button className="save-btn" onClick={handleSaveMissingData}>Guardar</button>
+            <button className="save-btn" onClick={postWalletUser}>Guardar</button>
           </div>
         </div>
       )}
