@@ -47,8 +47,7 @@ function Auth() {
         
             if(response.status == 200) {
                 localStorage.setItem('estadoUser',response.message.status);
-                console.log(response.message.rol);
-                localStorage.setItem('rolUser',response.message);
+                localStorage.setItem('rolUser',response.message.rol);
   
                 const rol = response.message.rol;
                 if (rol === 'user') {
@@ -61,6 +60,8 @@ function Auth() {
               }
 
           } catch (error) {
+            // se setea role admin porque si entra por el catch es porque es admin
+            localStorage.setItem('rolUser', 'admin');
             navigate('/admin');
           }
 

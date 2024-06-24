@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../../assets/css/admin.css';
 import Users from './modules/Users.jsx'; // Asegúrate de que la ruta sea correcta
 import ButtonsFee from './modules/ButtonsFee.jsx'; 
@@ -7,49 +7,21 @@ import { useNavigate } from 'react-router-dom';
 
 function Admin() {
   const navigate = useNavigate();
-  
-  const loginIn = async(e)=>{
-    const token = localStorage.getItem('authToken');
 
-    try {
-            
-      const response = await(await fetch('http://localhost:5006/ai-labs/user', {
-          method: "GET",
-          headers: {
-              'Content-Type': 'application/json',
-              'Accept-version': '1.0.0',
-              'Authorization': `Bearer ${token}`
-          }
-      })).json();
-  
-      if(response.status == 200) {
-          console.log(response.message.rol);
-
-          const rol = response.message.rol;
-          if (rol === 'user') {
-            navigate('/');
-          } else {
-            console.log(response)
-          }
-        } else {
-          console.log(response)
-        }
-
-    } catch (error) {
-      console.log('catch error...');
-      navigate('/');
+  useEffect(() => {
+    const storedRole = localStorage.getItem('rolUser');
+    if (storedRole !== 'admin') {
+      localStorage.clear();
+      navigate('/auth');
     }
-
-  }
-
-  //loginIn();
+  }, []);
 
   const [activeButton, setActiveButton] = useState(null);
 
   const handleButtonClick = (button) => {
     setActiveButton(button);
   };
-
+  
   return (
     <>
       <div className="container-modules">

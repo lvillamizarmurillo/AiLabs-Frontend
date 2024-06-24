@@ -1,8 +1,19 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import '../../assets/css/team.css';
 import Navbar from '../Global.jsx';
+import { useNavigate } from 'react-router-dom';
 
 const Team = () => {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const storedRole = localStorage.getItem('rolUser');
+    if (storedRole !== 'user') {
+      localStorage.clear();
+      navigate('/auth');
+    }
+  }, []);
+
   return (
     <>
       <Navbar />
