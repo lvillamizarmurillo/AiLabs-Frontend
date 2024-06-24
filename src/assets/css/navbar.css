@@ -220,11 +220,15 @@ body, html {
   position: fixed;
   top: 0;
   left: -100%;
-  width: 350px;
+  width: 320px;
   height: 100%;
   background: black;
   box-shadow: 2px 0 5px var(--box-shadow-color);
   transition: left 0.3s ease;
+
+  @media (min-width: 360px) {
+    width: 350px;
+  }
 }
 
 .menu1 .menu .offcanvas.open {
