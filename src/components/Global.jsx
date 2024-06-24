@@ -220,16 +220,16 @@ const Navbar = ({ userSignedIn }) => {
             <p>Wallet:</p>
             <input
               type="text"
-              value={idBinance}
-              onChange={(e) => setIdBinance(e.target.value)}
+              value={walletUSDTBEP20}
+              onChange={(e) => setWalletUSDTBEP20(e.target.value)}
               disabled={!isEditable}
               className={!isEditable ? 'input-disabled' : ''}
             />
             <p>Id Binance:</p>
             <input
               type="text"
-              value={walletUSDTBEP20}
-              onChange={(e) => setWalletUSDTBEP20(e.target.value)}
+              value={idBinance}
+              onChange={(e) => setIdBinance(e.target.value)}
               disabled={!isEditable}
               className={!isEditable ? 'input-disabled' : ''}
             />
